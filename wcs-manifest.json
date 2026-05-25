@@ -1,0 +1,80 @@
+{
+  "title": "Emission index",
+  "shortName": "noi-a22-emission-index",
+  "description": "A responsive webcomponent for showing the environmental impact associated to the real-time traffic on the A22 highway",
+  "descriptionAbstract": "A responsive webcomponent for showing the environmental impact associated to the real-time traffic on the A22 highway",
+  "license": "AGPL-3.0-or-later",
+  "repositoryUrl": "https://github.com/noi-techpark/webcomp-a22-emission-index.git",
+  "copyrightHolders": [
+    {
+      "name": "NOI",
+      "email": "info@noi.bz.it",
+      "organization": "NOI S.p.A",
+      "organizationUrl": "https://noi.bz.it"
+    }
+  ],
+  "authors": [
+    {
+      "name": "NOI",
+      "email": "digital@noi.bz.it",
+      "organization": "NOI S.p.A",
+      "organizationUrl": "https://noi.bz.it"
+    },
+    {
+      "name": "Solhea",
+      "email": "info@solhea.com",
+      "organization": "Solhea S.R.L.",
+      "organizationUrl": "https://solhea.com"
+    }
+  ],
+  "image": "wcs-logo.png",
+  "searchTags": [],
+  "dist": {
+    "basePath": "dist/bundle/noi-a22-emission-index",
+    "files": [
+      "noi-a22-emission-index.js",
+      "data_a22.json",
+      "i18n_en.json",
+      "i18n_it.json"
+    ],
+    "scripts": [
+      {
+        "file": "noi-a22-emission-index.js",
+        "parameter": "type='module'"
+      }
+    ]
+  },
+  "configuration": {
+    "tagName": "noi-a22-emission-index",
+    "options": [
+      {
+        "key": "layout",
+        "type": "select",
+        "label": "Layout appearance",
+        "required": false,
+        "options": {
+          "values": [
+            "desktop",
+            "tablet",
+            "mobile",
+            "auto"
+          ],
+          "default": "auto"
+        }
+      },
+      {
+        "key": "language",
+        "type": "select",
+        "label": "Two letter key for the language to be used, if omitted the widget will use the browser language. Fallback is `en`",
+        "required": false,
+        "options": {
+          "values": [
+            "en",
+            "it"
+          ],
+          "default": "en"
+        }
+      }
+    ]
+  }
+}

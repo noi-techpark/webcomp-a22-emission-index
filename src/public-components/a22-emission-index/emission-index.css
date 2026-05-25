@@ -1,0 +1,517 @@
+/*
+ * SPDX-FileCopyrightText: 2025 NOI Techpark <digital@noi.bz.it>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+:host {
+
+  /**
+   * @prop --color-primary: Primary color
+   */
+  --color-primary: #0068B4;
+  /**
+   * @prop --color-primary-rgb: Primary color in RGB format
+   */
+  --color-primary-rgb: 0, 104, 180;
+  /**
+   * @prop --color-secondary: Secondary color
+   */
+  --color-secondary: #00A767;
+  /**
+   * @prop --color-tertiary: Third color
+   */
+  --color-tertiary: #6792AA;
+
+  /**
+   * @prop --color-text: Text color
+   */
+  --color-text: #333333;
+  /**
+   * @prop --color-background: Background color
+   */
+  --color-background: #FFFFFF;
+  /**
+   * @prop --color-footer: Footer background color
+   */
+  --color-footer: #0068B4;
+
+  /**
+   * @prop --map-line-color: Map line color
+   */
+  --map-line-color: #3a9c77;
+
+
+  /**
+   * @prop --color-level-low: Color for 'good' air quality
+   */
+  --color-level-low: #50f0e6;
+  /**
+   * @prop --color-level-low-contrast: Contrast color for 'good' air quality
+   */
+  --color-level-low-contrast: #333333;
+
+  /**
+   * @prop --color-level-medium: Color for 'moderate' air quality
+   */
+  --color-level-medium: #f0e641;
+  /**
+   * @prop --color-level-medium-contrast: Contrast color for 'moderate' air quality
+   */
+  --color-level-medium-contrast: #333333;
+
+  /**
+   * @prop --color-level-high: Color for 'poor' air quality
+   */
+  --color-level-high: #ff5050;
+  /**
+   * @prop --color-level-high-contrast: Contrast color for 'poor' air quality
+   */
+  --color-level-high-contrast: #EEE;
+
+
+  /**
+   * @prop --color-level-unknown: Color for unknown/missing air quality
+   */
+  --color-level-unknown: #A1A1A1;
+  /**
+   * @prop --color-level-unknown:  Contrast color for 'unknown' air quality
+   */
+  --color-level-unknown-contrast: #000;
+
+  /**
+   * @prop --scrollbar-color: Scrollbar thumb color
+   */
+  --scrollbar-color: initial;
+  /**
+   * @prop --scrollbar-bg: Scrollbar background color
+   */
+  --scrollbar-bg: initial;
+}
+
+:host {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: inherit;
+  min-height: 600px;
+
+  background: var(--color-background);
+}
+
+.layout__content {
+  flex: 1;
+
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+
+.layout__list {
+  flex: 0 0 350px;
+  z-index: 1;
+  background: var(--color-background);
+  transition: transform ease-out 180ms;
+  transform: translateX(0%);
+
+  box-shadow: 0 3px 14px var(--color-text);
+}
+
+.layout__list--hidden {
+  transform: translateX(-105%); /* 5% to hide shadow =) */
+}
+
+:host(.layout--mobile) .layout__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.layout__center {
+  position: relative;
+  flex: 1;
+}
+
+.layout__legend {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+
+/** MAP **/
+noi-map {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: 0;
+
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1;
+}
+
+.leaflet-popup-tip-container {
+  margin-top: -2px;
+}
+
+.leaflet-popup-tip {
+  border: 2px solid var(--color-primary);
+  margin: -12px auto 0;
+  background: var(--color-background);
+}
+
+/** POPUP **/
+.popup {
+  height: 100%;
+  box-sizing: border-box;
+  /*padding: 20px;*/
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.popup__title {
+  font-weight: 500;
+  font-size: 1em;
+
+  display: flex;
+  align-items: stretch;
+  /*gap: 8px;*/
+}
+
+.popup__title-text {
+  padding: 4px 8px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.popup__title-box {
+  width: 50px;
+  min-height: 50px;
+  background: currentColor;
+}
+
+.popup__values {
+  font-size: 0.75em;
+  padding: 8px;
+}
+
+.popup__values-label {
+  color: var(--color-tertiary);
+}
+
+.popup__values-value {
+  color: var(--color-secondary);
+}
+
+.popup__date {
+  font-size: 0.75em;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  white-space: nowrap;
+  margin-right: 20px; /* this helps to fix leaflet popup size, as embedded margins are removed */
+  color: var(--color-tertiary);
+}
+
+.popup__date noi-icon {
+  flex-shrink: 0;
+}
+
+.popup__border {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+/** Map **/
+.noi-map-line {
+  stroke: var(--map-line-color);
+  stroke-width: 5px;
+}
+
+.noi-marker {
+  line-height: 0;
+  font-size: 1em;
+  height: 24px;
+  width: 24px;
+  background: currentColor;
+  border-radius: 50%;
+  border: 2px solid var(--color-background);
+  /*position: relative; < affects icon position */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noi-marker noi-icon {
+  /*color: #0068B4;*/
+  color: currentColor;
+}
+
+/*
+.noi-marker.selected .noi-marker__label {
+  background-color: var(--map-marker-color);
+  color: var(--map-marker-color-bg);
+}
+ */
+
+/** footer **/
+.legend {
+  padding: 8px 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: var(--color-footer);
+  color: var(--color-text);
+}
+
+.legend__item {
+  padding: 4px;
+  background: currentColor;
+  display: flex;
+  min-height: 1em;
+
+  align-items: center;
+  /* text-align: center; */
+  justify-content: center;
+}
+
+.legend__item-content {
+  text-align: center;
+}
+
+:host(.layout--mobile) .legend__item-content {
+  display: none;
+}
+
+.legend__item-threshold {
+  display: none;
+}
+
+.legend.legend--threshold .legend__item-threshold {
+  display: initial;
+}
+
+:host(.layout--mobile) .legend.legend--threshold .legend__item-threshold {
+  display: none;
+}
+
+
+.legend__item-threshold-mobile {
+  text-align: center;
+  display: none;
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+
+:host(.layout--mobile) .legend.legend--threshold .legend__item-threshold-mobile {
+  display: initial;
+}
+
+
+/** levels **/
+.level--unknown {
+  color: var(--color-level-unknown);
+}
+
+.level--low {
+  color: var(--color-level-low);
+}
+
+.level--medium {
+  color: var(--color-level-medium);
+}
+
+.level--high {
+  color: var(--color-level-high);
+}
+
+
+/** level contrast **/
+.level--unknown-contrast {
+  color: var(--color-level-unknown-contrast);
+}
+
+.level--low-contrast {
+  color: var(--color-level-low-contrast);
+}
+
+.level--medium-contrast {
+  color: var(--color-level-medium-contrast);
+}
+
+.level--high-contrast {
+  color: var(--color-level-high-contrast);
+}
+
+
+/* TODO: proposal */
+/* popup2 */
+.leaflet-popup-content {
+  /*min-width: 670px;*/
+  width: initial !important;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.leaflet-popup-content-wrapper {
+  box-shadow: 0 3px 14px var(--color-text);
+}
+
+.popup2 {
+}
+
+.popup2__title {
+  padding: 4px;
+
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.popup2__content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+:host(.layout--tablet) .popup2__content,
+:host(.layout--mobile) .popup2__content {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* lane-direction */
+.lane-direction {
+
+}
+
+.lane-direction__label {
+  padding: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lane-direction__value {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+/* lane */
+.lane {
+}
+
+.lane__label {
+  color: var(--color-primary);
+  font-size: 0.75em;
+  padding: 4px;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5ch;
+
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.lane__content {
+  padding: 0 1ch;
+  white-space: nowrap;
+}
+
+/* helpers */
+.border-bottom {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.border-top {
+  border-top: 1px solid var(--color-primary);
+}
+
+.border-right,
+.border-right--d {
+  border-right: 1px solid var(--color-primary);
+}
+
+:host(.layout--tablet) .border-right--d,
+:host(.layout--mobile) .border-right--d {
+  border-right: none;
+}
+
+/* emission value */
+.emission {
+  font-size: 0.75em;
+  padding-bottom: 4px;
+}
+
+.emission__label {
+  color: var(--color-tertiary);
+}
+
+.emission__value {
+}
+
+.emission-date {
+  padding-bottom: 4px;
+  font-size: 0.5em;
+  color: var(--color-tertiary);
+  opacity: 0.7;
+}
+
+.emission-spacer {
+  height: 4px;
+}
+
+
+/* menu */
+.menu-button-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  padding: 10px;
+}
+
+.menu-button {
+  background: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  font-size: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
+
+  color: var(--color-primary, inherit);
+  background: var(--color-background);
+
+  border: 1px solid var(--color-primary);
+}
+
+.menu-button--list {
+  font-size: 1em;
+}
