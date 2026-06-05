@@ -1,0 +1,16 @@
+{
+  "app.list.title": "Detection Stations",
+  "app.list.search.placeholder": "Search",
+  "app.list.empty": "No data",
+  "app.parameter.nox": "NOx",
+  "app.parameter.co2": "CO2",
+  "app.measureTime": "Detected",
+  "pollution--unknown": "n/a",
+  "pollution--low": "Low",
+  "pollution--medium": "Medium",
+  "pollution--high": "High",
+  "direction.south": "South direction",
+  "direction.north": "North direction",
+  "lane.slow": "Slow lane",
+  "lane.fast": "Fast lane"
+}

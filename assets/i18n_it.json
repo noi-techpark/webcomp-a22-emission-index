@@ -1,0 +1,16 @@
+{
+  "app.list.title": "Stazioni di rilevamento",
+  "app.list.search.placeholder": "Cerca",
+  "app.list.empty": "Nessun dato",
+  "app.parameter.nox": "NOx",
+  "app.parameter.co2": "CO2",
+  "app.measureTime": "Rilevato",
+  "pollution--unknown": "n/d",
+  "pollution--low": "Basso",
+  "pollution--medium": "Medio",
+  "pollution--high": "Alto",
+  "direction.south": "Direzione sud",
+  "direction.north": "Direzione nord",
+  "lane.slow": "corsia di marcia",
+  "lane.fast": "corsia di sorpasso"
+}
