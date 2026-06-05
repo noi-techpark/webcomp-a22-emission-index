@@ -10,7 +10,7 @@ import { getAssetPath } from "../../utils/asset-path";
 import { EmissionCluster, EmissionData, EmissionData_Flat, EmissionDataLevel } from "./EmissionData";
 import { LatLngLiteral } from "leaflet";
 
-const ORIGIN = 'webcomp-brennerlec';
+const ORIGIN = 'webcomp-a22-emission-index';
 
 interface EmissionFetchResult {
   clusters: EmissionCluster[];
